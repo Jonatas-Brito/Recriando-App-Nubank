@@ -4,30 +4,14 @@ import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:shopping/srs/controller/color_controller.dart';
 import 'package:shopping/srs/views/components/panel_first_login_widget.dart';
+import 'package:shopping/srs/views/pages/home_page.dart';
 import 'package:shopping/srs/views/pages/login_page.dart';
 
 final ValueNotifier<bool> notifierButtonsVisible = ValueNotifier(false);
 
-String cpf = "";
-
-/*final colorPurple = Observer(builder: (_) {
-  return cpf.length >= 14 ? color.colorCheckA : true;
-});*/
-
-Future<void> _openLoginPage(context) async {
-  notifierButtonsVisible.value = false;
-  await Navigator.of(context).pushReplacement(PageRouteBuilder(
-      barrierColor: Colors.purple,
-      opaque: true,
-      pageBuilder: (_, animation1, __) {
-        return FadeTransition(
-          opacity: animation1,
-          child: LoginPage(),
-        );
-      }));
-  notifierButtonsVisible.value = true;
-}
+final controller = ColorController();
 
 Future<void> _openFirstLogin(context) async {
   notifierButtonsVisible.value = false;
@@ -55,6 +39,12 @@ class _PanelLoginState extends State<PanelLogin> {
 
   @override
   Widget build(BuildContext context) {
+    final activeButton = Observer(builder: (_) {
+      return controller.text.length == 14
+          ? _controllerButtonOn()
+          : _controllerButtonOff();
+    });
+
     final size = MediaQuery.of(context).size;
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 1.0, end: 0.1),
@@ -88,7 +78,8 @@ class _PanelLoginState extends State<PanelLogin> {
                           color: Colors.black54,
                         ),
                         onPressed: () {
-                          _openLoginPage(context);
+                          controller.text = '0';
+                          Navigator.pop(context);
                         },
                       ),
                     ),
@@ -124,9 +115,7 @@ class _PanelLoginState extends State<PanelLogin> {
                         ),
                         controller: numberController,
                         cursorHeight: 30,
-                        onChanged: (text) {
-                          cpf = text;
-                        },
+                        onChanged: controller.mudarText,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(border: InputBorder.none
 
@@ -172,26 +161,7 @@ class _PanelLoginState extends State<PanelLogin> {
                     Positioned(
                       bottom: 70,
                       left: 0,
-                      child: InkWell(
-                        child: Container(
-                          height: 60,
-                          width: 410,
-                          child: Align(
-                            child: Text(
-                              'CONTINUAR',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  color: Colors.black45),
-                            ),
-                          ),
-                        ),
-                        onTap: () {
-                          if (cpf != '') {
-                            Navigator.of(context).pushReplacementNamed('/home');
-                          }
-                        },
-                      ),
+                      child: activeButton,
                     ),
                   ],
                 ),
@@ -200,6 +170,44 @@ class _PanelLoginState extends State<PanelLogin> {
           ),
         ],
       ),
+    );
+  }
+
+  _controllerButtonOn() {
+    return InkWell(
+      child: Container(
+        height: 60,
+        width: 410,
+        child: Align(
+          child: Text(
+            'CONTINUAR',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+              color: Colors.purple,
+            ),
+          ),
+        ),
+      ),
+      onTap: () {
+        Navigator.of(context).pushReplacementNamed('/home');
+      },
+    );
+  }
+
+  _controllerButtonOff() {
+    return Container(
+      height: 60,
+      width: 410,
+      child: Align(
+          child: Text(
+        'CONTINUAR',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+          color: Colors.black54,
+        ),
+      )),
     );
   }
 }

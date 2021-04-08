@@ -3,22 +3,13 @@ import 'dart:ui';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:shopping/srs/controller/color_controller.dart';
 import 'package:shopping/srs/views/pages/login_page.dart';
 
 final ValueNotifier<bool> notifierButtonsVisible = ValueNotifier(false);
 
-Future<void> _openLoginPage(context) async {
-  notifierButtonsVisible.value = false;
-  await Navigator.of(context).pushReplacement(PageRouteBuilder(
-      opaque: true,
-      pageBuilder: (_, animation1, __) {
-        return FadeTransition(
-          opacity: animation1,
-          child: LoginPage(),
-        );
-      }));
-  notifierButtonsVisible.value = true;
-}
+final controller = ColorController();
 
 class PanelFirstLogin extends StatefulWidget {
   @override
@@ -27,11 +18,16 @@ class PanelFirstLogin extends StatefulWidget {
 
 class _PanelFirstLoginState extends State<PanelFirstLogin> {
   final numberController = TextEditingController();
-  String cpf = "";
 
   @override
   Widget build(BuildContext context) {
+    final activeButton = Observer(builder: (_) {
+      return controller.text.length == 14
+          ? _controllerButtonOn()
+          : _controllerButtonOff();
+    });
     final size = MediaQuery.of(context).size;
+
     return Stack(
       children: [
         Container(
@@ -63,7 +59,8 @@ class _PanelFirstLoginState extends State<PanelFirstLogin> {
                       color: Colors.black54,
                     ),
                     onPressed: () {
-                      _openLoginPage(context);
+                      controller.text = '0';
+                      Navigator.pop(context);
                     },
                   ),
                 ),
@@ -102,9 +99,7 @@ class _PanelFirstLoginState extends State<PanelFirstLogin> {
                     ),
                     controller: numberController,
                     cursorHeight: 30,
-                    onChanged: (text) {
-                      cpf = text;
-                    },
+                    onChanged: controller.mudarText,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(border: InputBorder.none
 
@@ -120,28 +115,7 @@ class _PanelFirstLoginState extends State<PanelFirstLogin> {
                     color: Colors.black45,
                   ),
                 ),
-                InkWell(
-                  child: Container(
-                    height: 60,
-                    width: 410,
-                    child: Align(
-                      child: Text(
-                        'CONTINUAR',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: cpf.length >= 11
-                                ? Colors.purple
-                                : Colors.black45),
-                      ),
-                    ),
-                  ),
-                  onTap: () {
-                    if (cpf != '') {
-                      Navigator.of(context).popAndPushNamed('/mail');
-                    }
-                  },
-                ),
+                activeButton,
               ],
             ),
           ),
@@ -149,4 +123,55 @@ class _PanelFirstLoginState extends State<PanelFirstLogin> {
       ],
     );
   }
+
+  _controllerButtonOn() {
+    return InkWell(
+      child: Container(
+        height: 60,
+        width: 410,
+        child: Align(
+          child: Text(
+            'CONTINUAR',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+              color: Colors.purple,
+            ),
+          ),
+        ),
+      ),
+      onTap: () {
+        Navigator.of(context).pushReplacementNamed('/mail');
+      },
+    );
+  }
+
+  _controllerButtonOff() {
+    return Container(
+      height: 60,
+      width: 410,
+      child: Align(
+          child: Text(
+        'CONTINUAR',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+          color: Colors.black54,
+        ),
+      )),
+    );
+  }
+}
+
+Future<void> _openLoginPage(context) async {
+  notifierButtonsVisible.value = false;
+  await Navigator.of(context).pushReplacement(PageRouteBuilder(
+      opaque: true,
+      pageBuilder: (_, animation1, __) {
+        return FadeTransition(
+          opacity: animation1,
+          child: LoginPage(),
+        );
+      }));
+  notifierButtonsVisible.value = true;
 }
