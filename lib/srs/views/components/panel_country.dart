@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:shopping/srs/controller/icon_controller.dart';
-import 'package:shopping/srs/controller/icons.dart';
-
-final ValueNotifier<bool> notifierButtonsVisible = ValueNotifier(false);
 
 final controller = Controller();
-
-final icons = IconsT();
 
 final iconForwardB = Observer(builder: (_) {
   return controller.iconCheckB.value == 1 || controller.iconCheckB.value == 2

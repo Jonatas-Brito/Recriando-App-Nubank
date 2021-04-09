@@ -8,8 +8,6 @@ import 'package:shopping/srs/controller/color_controller.dart';
 import 'package:shopping/srs/views/pages/cadastro/cadastro_ok_widget.dart';
 import 'package:shopping/srs/views/pages/login_page.dart';
 
-final ValueNotifier<bool> notifierButtonsVisible = ValueNotifier(false);
-
 final controller = ColorController();
 
 class PanelCadastroName extends StatefulWidget {
@@ -19,7 +17,7 @@ class PanelCadastroName extends StatefulWidget {
 
 class _PanelCadastroName extends State<PanelCadastroName> {
   final numberController = TextEditingController();
-  String name;
+
   @override
   Widget build(BuildContext context) {
     final activeButton = Observer(builder: (_) {
@@ -158,9 +156,8 @@ class _PanelCadastroName extends State<PanelCadastroName> {
   }
 }
 
-Future<void> _openCadastroOk(context) async {
-  notifierButtonsVisible.value = false;
-  await Navigator.of(context).pushReplacement(PageRouteBuilder(
+_openCadastroOk(context) {
+  Navigator.of(context).pushReplacement(PageRouteBuilder(
       opaque: false,
       pageBuilder: (_, animation1, __) {
         return FadeTransition(
@@ -168,12 +165,10 @@ Future<void> _openCadastroOk(context) async {
           child: CadastroOk(),
         );
       }));
-  notifierButtonsVisible.value = true;
 }
 
-Future<void> _openInitial(context) async {
-  notifierButtonsVisible.value = false;
-  await Navigator.of(context).pushReplacement(PageRouteBuilder(
+_openInitial(context) {
+  Navigator.of(context).pushReplacement(PageRouteBuilder(
       opaque: false,
       pageBuilder: (_, animation1, __) {
         return FadeTransition(
@@ -181,5 +176,4 @@ Future<void> _openInitial(context) async {
           child: LoginPage(),
         );
       }));
-  notifierButtonsVisible.value = true;
 }

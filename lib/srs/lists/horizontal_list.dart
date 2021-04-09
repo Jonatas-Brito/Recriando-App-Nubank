@@ -249,17 +249,6 @@ class ListHorizontal extends StatelessWidget {
             ),
           ),
         ),
-        /*Padding(
-                    padding:
-                        const EdgeInsets.only(right: 15, top: 10, bottom: 20),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(4)),
-                      child: RaisedButton(
-                        onPressed: () {},
-                        color: Colors.purple[600],
-                      ),
-                    ),
-                  ),*/
       ],
     );
   }

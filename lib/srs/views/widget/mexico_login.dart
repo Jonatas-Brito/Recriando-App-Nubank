@@ -5,50 +5,6 @@ import 'package:shopping/srs/views/components/panel_login_widget.dart';
 
 const sizeImage = 272.0;
 
-final ValueNotifier<bool> notifierButtonsVisible = ValueNotifier(false);
-
-Future<void> _openPanelLogin(context) async {
-  notifierButtonsVisible.value = false;
-  await Navigator.of(context).push(PageRouteBuilder(
-      barrierColor: Colors.purple,
-      opaque: false,
-      pageBuilder: (_, animation1, __) {
-        return FadeTransition(
-          opacity: animation1,
-          child: PanelLogin(),
-        );
-      }));
-  notifierButtonsVisible.value = true;
-}
-
-Future<void> _openPanelCountry(context) async {
-  notifierButtonsVisible.value = false;
-  await Navigator.of(context).push(PageRouteBuilder(
-      barrierColor: Colors.black26,
-      opaque: false,
-      pageBuilder: (_, animation1, __) {
-        return FadeTransition(
-          opacity: animation1,
-          child: PanelCountry(),
-        );
-      }));
-  notifierButtonsVisible.value = true;
-}
-
-Future<void> _openFirstLogin(context) async {
-  notifierButtonsVisible.value = false;
-  Navigator.of(context).push(PageRouteBuilder(
-      barrierColor: Colors.purple,
-      opaque: true,
-      pageBuilder: (_, animation1, __) {
-        return FadeTransition(
-          opacity: animation1,
-          child: PanelFirstLogin(),
-        );
-      }));
-  notifierButtonsVisible.value = true;
-}
-
 class MexicoLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -169,9 +125,7 @@ class MexicoLogin extends StatelessWidget {
                             ),
                           ),
                         ),
-                        onTap: () {
-                          _openFirstLogin(context);
-                        },
+                        onTap: () {},
                       ),
                     ),
                     Padding(
@@ -194,9 +148,7 @@ class MexicoLogin extends StatelessWidget {
                             ),
                           ),
                         ),
-                        onTap: () {
-                          _openPanelLogin(context);
-                        },
+                        onTap: () {},
                       ),
                     )
                   ],
@@ -205,5 +157,17 @@ class MexicoLogin extends StatelessWidget {
             ],
           ),
         ));
+  }
+
+  _openPanelCountry(context) {
+    Navigator.of(context).push(PageRouteBuilder(
+        barrierColor: Colors.black26,
+        opaque: false,
+        pageBuilder: (_, animation1, __) {
+          return FadeTransition(
+            opacity: animation1,
+            child: PanelCountry(),
+          );
+        }));
   }
 }

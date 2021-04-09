@@ -3,22 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:shopping/srs/views/components/panel_login_widget.dart';
 
-final ValueNotifier<bool> notifierButtonsVisible = ValueNotifier(false);
-
-Future<void> _openLogin(context) async {
-  notifierButtonsVisible.value = false;
-  await Navigator.of(context).pushReplacement(PageRouteBuilder(
-      barrierColor: Colors.purple,
-      opaque: false,
-      pageBuilder: (_, animation1, __) {
-        return FadeTransition(
-          opacity: animation1,
-          child: PanelLogin(),
-        );
-      }));
-  notifierButtonsVisible.value = true;
-}
-
 class CadastroOk extends StatefulWidget {
   @override
   _CadastroOkState createState() => _CadastroOkState();
@@ -253,5 +237,17 @@ class _CadastroOkState extends State<CadastroOk> {
         ),
       ],
     );
+  }
+
+  _openLogin(context) {
+    Navigator.of(context).pushReplacement(PageRouteBuilder(
+        barrierColor: Colors.purple,
+        opaque: false,
+        pageBuilder: (_, animation1, __) {
+          return FadeTransition(
+            opacity: animation1,
+            child: PanelLogin(),
+          );
+        }));
   }
 }

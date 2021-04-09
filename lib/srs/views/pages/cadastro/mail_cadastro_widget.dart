@@ -4,21 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shopping/srs/views/pages/cadastro/name_cadastro_widget.dart';
 
-final ValueNotifier<bool> notifierButtonsVisible = ValueNotifier(false);
-
-Future<void> _openCadastroName(context) async {
-  notifierButtonsVisible.value = false;
-  await Navigator.of(context).pushReplacement(PageRouteBuilder(
-      opaque: true,
-      pageBuilder: (_, animation1, __) {
-        return FadeTransition(
-          opacity: animation1,
-          child: PanelCadastroName(),
-        );
-      }));
-  notifierButtonsVisible.value = true;
-}
-
 class PanelCadastroEmail extends StatefulWidget {
   @override
   _PanelCadastroEmail createState() => _PanelCadastroEmail();
@@ -138,5 +123,16 @@ class _PanelCadastroEmail extends State<PanelCadastroEmail> {
         ),
       ],
     );
+  }
+
+  _openCadastroName(context) {
+    Navigator.of(context).pushReplacement(PageRouteBuilder(
+        opaque: true,
+        pageBuilder: (_, animation1, __) {
+          return FadeTransition(
+            opacity: animation1,
+            child: PanelCadastroName(),
+          );
+        }));
   }
 }

@@ -13,7 +13,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var isDataVisible = false;
-  final isTextVisible = true;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

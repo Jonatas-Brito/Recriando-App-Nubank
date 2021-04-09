@@ -2,21 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shopping/srs/views/components/panel_country.dart';
 
 class CountryDropDown extends StatelessWidget {
-  final ValueNotifier<bool> notifierButtonsVisible = ValueNotifier(false);
-  Future<void> _openPanelCountry(context) async {
-    notifierButtonsVisible.value = false;
-    await Navigator.of(context).push(PageRouteBuilder(
-        barrierColor: Colors.black26,
-        opaque: false,
-        pageBuilder: (_, animation1, __) {
-          return FadeTransition(
-            opacity: animation1,
-            child: PanelCountry(),
-          );
-        }));
-    notifierButtonsVisible.value = true;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -50,5 +35,17 @@ class CountryDropDown extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _openPanelCountry(context) {
+    Navigator.of(context).push(PageRouteBuilder(
+        barrierColor: Colors.black26,
+        opaque: false,
+        pageBuilder: (_, animation1, __) {
+          return FadeTransition(
+            opacity: animation1,
+            child: PanelCountry(),
+          );
+        }));
   }
 }

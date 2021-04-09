@@ -9,25 +9,7 @@ import 'package:shopping/srs/views/components/panel_first_login_widget.dart';
 import 'package:shopping/srs/views/pages/home_page.dart';
 import 'package:shopping/srs/views/pages/login_page.dart';
 
-final ValueNotifier<bool> notifierButtonsVisible = ValueNotifier(false);
-
 final controller = ColorController();
-
-Future<void> _openFirstLogin(context) async {
-  notifierButtonsVisible.value = false;
-  await Navigator.of(context).pushReplacement(PageRouteBuilder(
-      barrierColor: Colors.purple,
-      opaque: true,
-      pageBuilder: (_, animation1, __) {
-        return FadeTransition(
-          opacity: animation1,
-          child: PanelFirstLogin(),
-        );
-      }));
-  notifierButtonsVisible.value = true;
-}
-
-final _sigInFormKey = GlobalKey<FormState>();
 
 class PanelLogin extends StatefulWidget {
   @override
@@ -103,7 +85,6 @@ class _PanelLoginState extends State<PanelLogin> {
                       padding: const EdgeInsets.only(
                           top: 150.0, left: 20, right: 20),
                       child: TextFormField(
-                        key: _sigInFormKey,
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly,
                           CpfInputFormatter(),
@@ -209,5 +190,17 @@ class _PanelLoginState extends State<PanelLogin> {
         ),
       )),
     );
+  }
+
+  _openFirstLogin(context) {
+    Navigator.of(context).pushReplacement(PageRouteBuilder(
+        barrierColor: Colors.purple,
+        opaque: true,
+        pageBuilder: (_, animation1, __) {
+          return FadeTransition(
+            opacity: animation1,
+            child: PanelFirstLogin(),
+          );
+        }));
   }
 }

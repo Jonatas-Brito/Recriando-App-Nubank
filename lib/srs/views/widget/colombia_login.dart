@@ -1,53 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:shopping/srs/controller/icon_controller.dart';
 import 'package:shopping/srs/views/components/panel_country.dart';
 import 'package:shopping/srs/views/components/panel_first_login_widget.dart';
 import 'package:shopping/srs/views/components/panel_login_widget.dart';
 
+Controller controller;
+
 const sizeImage = 272.0;
-
-final ValueNotifier<bool> notifierButtonsVisible = ValueNotifier(false);
-
-Future<void> _openPanelLogin(context) async {
-  notifierButtonsVisible.value = false;
-  await Navigator.of(context).push(PageRouteBuilder(
-      barrierColor: Colors.purple,
-      opaque: false,
-      pageBuilder: (_, animation1, __) {
-        return FadeTransition(
-          opacity: animation1,
-          child: PanelLogin(),
-        );
-      }));
-  notifierButtonsVisible.value = true;
-}
-
-Future<void> _openPanelCountry(context) async {
-  notifierButtonsVisible.value = false;
-  await Navigator.of(context).push(PageRouteBuilder(
-      barrierColor: Colors.black26,
-      opaque: false,
-      pageBuilder: (_, animation1, __) {
-        return FadeTransition(
-          opacity: animation1,
-          child: PanelCountry(),
-        );
-      }));
-  notifierButtonsVisible.value = true;
-}
-
-Future<void> _openFirstLogin(context) async {
-  notifierButtonsVisible.value = false;
-  Navigator.of(context).push(PageRouteBuilder(
-      barrierColor: Colors.purple,
-      opaque: true,
-      pageBuilder: (_, animation1, __) {
-        return FadeTransition(
-          opacity: animation1,
-          child: PanelFirstLogin(),
-        );
-      }));
-  notifierButtonsVisible.value = true;
-}
 
 class ColombiaLogin extends StatelessWidget {
   @override
@@ -168,9 +127,7 @@ class ColombiaLogin extends StatelessWidget {
                             ),
                           ),
                         ),
-                        onTap: () {
-                          _openFirstLogin(context);
-                        },
+                        onTap: () {},
                       ),
                     ),
                     Padding(
@@ -192,9 +149,7 @@ class ColombiaLogin extends StatelessWidget {
                             ),
                           ),
                         ),
-                        onTap: () {
-                          _openPanelLogin(context);
-                        },
+                        onTap: () {},
                       ),
                     )
                   ],
@@ -203,5 +158,17 @@ class ColombiaLogin extends StatelessWidget {
             ],
           ),
         ));
+  }
+
+  _openPanelCountry(context) {
+    Navigator.of(context).push(PageRouteBuilder(
+        barrierColor: Colors.black26,
+        opaque: false,
+        pageBuilder: (_, animation1, __) {
+          return FadeTransition(
+            opacity: animation1,
+            child: PanelCountry(),
+          );
+        }));
   }
 }

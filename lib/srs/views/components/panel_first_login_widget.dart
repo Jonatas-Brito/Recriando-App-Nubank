@@ -7,8 +7,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:shopping/srs/controller/color_controller.dart';
 import 'package:shopping/srs/views/pages/login_page.dart';
 
-final ValueNotifier<bool> notifierButtonsVisible = ValueNotifier(false);
-
 final controller = ColorController();
 
 class PanelFirstLogin extends StatefulWidget {
@@ -163,9 +161,8 @@ class _PanelFirstLoginState extends State<PanelFirstLogin> {
   }
 }
 
-Future<void> _openLoginPage(context) async {
-  notifierButtonsVisible.value = false;
-  await Navigator.of(context).pushReplacement(PageRouteBuilder(
+_openLoginPage(context) {
+  Navigator.of(context).pushReplacement(PageRouteBuilder(
       opaque: true,
       pageBuilder: (_, animation1, __) {
         return FadeTransition(
@@ -173,5 +170,4 @@ Future<void> _openLoginPage(context) async {
           child: LoginPage(),
         );
       }));
-  notifierButtonsVisible.value = true;
 }
