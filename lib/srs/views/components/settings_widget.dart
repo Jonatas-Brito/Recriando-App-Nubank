@@ -32,25 +32,22 @@ class SettingsView extends StatelessWidget {
                 indent: 20.0,
                 endIndent: 20.0,
               ),
-              InkWell(
-                  child: InkWell(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 15, right: 15, top: 5, bottom: 5),
-                  child: ListTile(
-                    leading: Icon(Icons.help_outline_rounded,
-                        color: Colors.white, size: 35),
-                    title: Text('Me ajuda',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500)),
-                    trailing: Icon(Icons.arrow_forward_ios_rounded,
-                        color: Colors.white, size: 15),
-                  ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 15, right: 15, top: 5, bottom: 5),
+                child: ListTile(
+                  leading: Icon(Icons.help_outline_rounded,
+                      color: Colors.white, size: 35),
+                  title: Text('Me ajuda',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500)),
+                  trailing: Icon(Icons.arrow_forward_ios_rounded,
+                      color: Colors.white, size: 15),
+                  onTap: () {},
                 ),
-                onTap: () {},
-              )),
+              ),
               Divider(
                 thickness: 0.40,
                 height: 0.35,
@@ -58,12 +55,10 @@ class SettingsView extends StatelessWidget {
                 indent: 20.0,
                 endIndent: 20.0,
               ),
-              InkWell(
-                  child: InkWell(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 15, right: 15, top: 5, bottom: 5),
-                  child: ListTile(
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 15, right: 15, top: 5, bottom: 5),
+                child: ListTile(
                     leading: Icon(Icons.credit_card_rounded,
                         color: Colors.white, size: 35),
                     title: Text('Ativar função débito',
@@ -73,10 +68,8 @@ class SettingsView extends StatelessWidget {
                             fontWeight: FontWeight.w500)),
                     trailing: Icon(Icons.arrow_forward_ios_rounded,
                         color: Colors.white, size: 15),
-                  ),
-                ),
-                onTap: () {},
-              )),
+                    onTap: () {}),
+              ),
               Divider(
                 thickness: 0.40,
                 height: 0.35,
@@ -84,12 +77,10 @@ class SettingsView extends StatelessWidget {
                 indent: 20.0,
                 endIndent: 20.0,
               ),
-              InkWell(
-                  child: InkWell(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 15, right: 15, top: 5, bottom: 5),
-                  child: ListTile(
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 15, right: 15, top: 5, bottom: 5),
+                child: ListTile(
                     leading: Image.asset('assets/people1.png',
                         color: Colors.white, height: 35),
                     title: Text('Perfil',
@@ -99,10 +90,8 @@ class SettingsView extends StatelessWidget {
                             fontWeight: FontWeight.w500)),
                     trailing: Icon(Icons.arrow_forward_ios_rounded,
                         color: Colors.white, size: 15),
-                  ),
-                ),
-                onTap: () {},
-              )),
+                    onTap: () {}),
+              ),
               Divider(
                 thickness: 0.40,
                 height: 0.35,
@@ -110,12 +99,10 @@ class SettingsView extends StatelessWidget {
                 indent: 20.0,
                 endIndent: 20.0,
               ),
-              InkWell(
-                  child: InkWell(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 15, right: 15, top: 5, bottom: 5),
-                  child: ListTile(
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 15, right: 15, top: 5, bottom: 5),
+                child: ListTile(
                     leading: Image.asset('assets/current_money.png',
                         color: Colors.white, width: 30),
                     title: Text('Configurar conta',
@@ -125,10 +112,8 @@ class SettingsView extends StatelessWidget {
                             fontWeight: FontWeight.w500)),
                     trailing: Icon(Icons.arrow_forward_ios_rounded,
                         color: Colors.white, size: 15),
-                  ),
-                ),
-                onTap: () {},
-              )),
+                    onTap: () {}),
+              ),
               Divider(
                 thickness: 0.40,
                 height: 0.35,
@@ -136,12 +121,10 @@ class SettingsView extends StatelessWidget {
                 indent: 20.0,
                 endIndent: 20.0,
               ),
-              InkWell(
-                  child: InkWell(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 15, right: 15, top: 5, bottom: 5),
-                  child: ListTile(
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 15, right: 15, top: 5, bottom: 5),
+                child: ListTile(
                     leading: Image.asset('assets/images/pix.png',
                         color: Colors.white, width: 30),
                     title: Text('Minhas chaves Pix',
@@ -151,10 +134,8 @@ class SettingsView extends StatelessWidget {
                             fontWeight: FontWeight.w500)),
                     trailing: Icon(Icons.arrow_forward_ios_rounded,
                         color: Colors.white, size: 15),
-                  ),
-                ),
-                onTap: () {},
-              )),
+                    onTap: () {}),
+              ),
               Divider(
                 thickness: 0.40,
                 height: 0.35,
@@ -162,12 +143,10 @@ class SettingsView extends StatelessWidget {
                 indent: 20.0,
                 endIndent: 20.0,
               ),
-              InkWell(
-                  child: InkWell(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 15, right: 15, top: 5, bottom: 5),
-                  child: ListTile(
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 15, right: 15, top: 5, bottom: 5),
+                child: ListTile(
                     leading: Icon(Icons.credit_card_rounded,
                         color: Colors.white, size: 35),
                     title: Text('Configurar cartão',
@@ -177,10 +156,8 @@ class SettingsView extends StatelessWidget {
                             fontWeight: FontWeight.w500)),
                     trailing: Icon(Icons.arrow_forward_ios_rounded,
                         color: Colors.white, size: 15),
-                  ),
-                ),
-                onTap: () {},
-              )),
+                    onTap: () {}),
+              ),
               Divider(
                 thickness: 0.40,
                 height: 0.35,
@@ -188,12 +165,10 @@ class SettingsView extends StatelessWidget {
                 indent: 20.0,
                 endIndent: 20.0,
               ),
-              InkWell(
-                  child: InkWell(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 15, right: 15, top: 5, bottom: 5),
-                  child: ListTile(
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 15, right: 15, top: 5, bottom: 5),
+                child: ListTile(
                     leading: Icon(Icons.home_work_outlined,
                         color: Colors.white, size: 35),
                     title: Text('Pedir Conta PJ',
@@ -203,10 +178,8 @@ class SettingsView extends StatelessWidget {
                             fontWeight: FontWeight.w500)),
                     trailing: Icon(Icons.arrow_forward_ios_rounded,
                         color: Colors.white, size: 15),
-                  ),
-                ),
-                onTap: () {},
-              )),
+                    onTap: () {}),
+              ),
               Divider(
                 thickness: 0.40,
                 height: 0.35,
@@ -214,12 +187,10 @@ class SettingsView extends StatelessWidget {
                 indent: 20.0,
                 endIndent: 20.0,
               ),
-              InkWell(
-                  child: InkWell(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 15, right: 15, top: 5, bottom: 5),
-                  child: ListTile(
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 15, right: 15, top: 5, bottom: 5),
+                child: ListTile(
                     leading: Icon(Icons.notifications_outlined,
                         color: Colors.white, size: 35),
                     title: Text('Configurar notificações',
@@ -229,10 +200,8 @@ class SettingsView extends StatelessWidget {
                             fontWeight: FontWeight.w500)),
                     trailing: Icon(Icons.arrow_forward_ios_rounded,
                         color: Colors.white, size: 15),
-                  ),
-                ),
-                onTap: () {},
-              )),
+                    onTap: () {}),
+              ),
               Divider(
                 thickness: 0.40,
                 height: 0.35,
@@ -240,12 +209,10 @@ class SettingsView extends StatelessWidget {
                 indent: 20.0,
                 endIndent: 20.0,
               ),
-              InkWell(
-                  child: InkWell(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 15, right: 15, top: 5, bottom: 5),
-                  child: ListTile(
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 15, right: 15, top: 5, bottom: 5),
+                child: ListTile(
                     leading: Icon(Icons.phone_iphone_rounded,
                         color: Colors.white, size: 35),
                     title: Text('Configurações do app',
@@ -255,10 +222,8 @@ class SettingsView extends StatelessWidget {
                             fontWeight: FontWeight.w500)),
                     trailing: Icon(Icons.arrow_forward_ios_rounded,
                         color: Colors.white, size: 15),
-                  ),
-                ),
-                onTap: () {},
-              )),
+                    onTap: () {}),
+              ),
               Divider(
                 thickness: 0.40,
                 height: 0.35,
@@ -266,12 +231,10 @@ class SettingsView extends StatelessWidget {
                 indent: 20.0,
                 endIndent: 20.0,
               ),
-              InkWell(
-                  child: InkWell(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                      left: 15, right: 15, top: 5, bottom: 5),
-                  child: ListTile(
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 15, right: 15, top: 5, bottom: 5),
+                child: ListTile(
                     leading: Icon(Icons.help_outline_rounded,
                         color: Colors.white, size: 35),
                     title: Text('Sobre',
@@ -281,10 +244,8 @@ class SettingsView extends StatelessWidget {
                             fontWeight: FontWeight.w500)),
                     trailing: Icon(Icons.arrow_forward_ios_rounded,
                         color: Colors.white, size: 15),
-                  ),
-                ),
-                onTap: () {},
-              )),
+                    onTap: () {}),
+              ),
               Divider(
                 thickness: 0.40,
                 height: 0.5,
